@@ -16,11 +16,13 @@ int main(void) {
       printf("\n3 - Remover");
       printf("\n4 - Exibir posição");
       printf("\n5 - Esvaziar Lista");
-      printf("\n6 - sair\n");
+      printf("\n6 - Obter elemento por posição");
+      printf("\n7 - Inserir elemento por posição");
+      printf("\n8 - sair");
       printf("\nDigite a opção:");
       scanf("%d", &opcao);
       
-      if(opcao >= 1 && opcao <= 6){
+      if(opcao >= 1 && opcao <= 8){
         if (opcao == 1) {
           if (vazia(&l)) {
             caixinha("A lista está vazia");
@@ -70,6 +72,32 @@ int main(void) {
           caixinha("Lista esvaziada!");
         }
         if (opcao == 6) {
+          int posicao;
+          char item[100];
+          printf("\nInforme a posição do elemento que deseja obter: ");
+          scanf("%d", &posicao);
+          if(obterElemento(&l, posicao, item) == 1){
+            system("clear");
+            printf("\nBusca bem sucedida!\nA posição %d abriga o item: %s\n", posicao, item);
+          } else {
+            caixinha("A posicao informada não existe.");
+          }
+        }
+        if (opcao == 7) {
+          char elem[100];
+          int posicao = 0;
+          printf("\nInforme o nome do elemento: ");
+          scanf("%s", elem);
+          //Caso a lista esteja vazia não é necessário posição
+          if(vazia(&l)==0){
+          printf("Informe a posicao do elemento: ");
+          scanf("%d", &posicao);
+          }
+          if(inserirNaPosicao(&l, elem, posicao)==1){
+            caixinha("Elemento inserido com sucesso");
+          }
+        }
+        if (opcao == 8) {
           break;
         }
     }
@@ -82,5 +110,3 @@ printf("\n-------------------------------");
 printf("\nAté Logo!\n");
 printf("-------------------------------\n");
 }
-
-

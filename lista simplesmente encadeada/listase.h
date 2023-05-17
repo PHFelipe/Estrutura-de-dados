@@ -16,3 +16,5 @@ int remover(Lista *l, char dado[100]);
 void exibir(Lista *l);
 void caixinha(char *mensagem);
 void esvazia(Lista *l);
+int obterElemento(Lista *l, int posicao, char *elemento);
+int inserirNaPosicao(Lista *l, char elemento[], int posicao);
